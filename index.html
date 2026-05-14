@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>From Inspection to Insight — The Aerones Wind Operations Stack · Live · June 11, 2026</title>
+  <meta name="description" content="Live webinar with Aerones VP of Data Andis Cīrulis and Product Manager Nauris Horsts. See the Customer Portal, Visual Inspection Studio, and AI planning tools — demoed on real turbine data. June 11, 2026, 3:00 PM CEST / 8:00 AM CT. Free, 60 minutes, with live Q&A." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://webinar.aerones.com/" />
+
+  <!-- Open Graph / social cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://webinar.aerones.com/" />
+  <meta property="og:title" content="From Inspection to Insight — The Aerones Wind Operations Stack" />
+  <meta property="og:description" content="Live webinar · June 11, 2026 · 3:00 PM CEST / 8:00 AM CT. See the Customer Portal, Visual Inspection Studio, and AI planning tools — demoed end-to-end on real turbine data." />
+  <meta property="og:image" content="https://webinar.aerones.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="From Inspection to Insight — The Aerones Wind Operations Stack" />
+  <meta name="twitter:description" content="Live webinar · June 11, 2026 · 3:00 PM CEST / 8:00 AM CT." />
+  <meta name="twitter:image" content="https://webinar.aerones.com/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'Helvetica Neue', 'Arial', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ae: {
+              'dark-blue':  '#1C67A1',
+              'light-blue': '#30A2D6',
+              'sky-blue':   '#88CDF6',
+              'ice-blue':   '#BCE6FF',
+              'ink-900':    '#13263A',
+              'ink-700':    '#2C4359',
+              'ink-500':    '#557089',
+              'ink-300':    '#9DB1C3',
+              'ink-200':    '#C7D3DF',
+              'ink-100':    '#E3EAF1',
+              'ink-50':     '#F3F6F9',
+            },
+          },
+          letterSpacing: {
+            stamp: '0.14em',
+            eyebrow: '0.16em',
+          },
+          boxShadow: {
+            ae1: '0 1px 2px rgba(11,26,39,.06), 0 1px 1px rgba(11,26,39,.04)',
+            ae2: '0 4px 12px rgba(11,26,39,.08), 0 1px 2px rgba(11,26,39,.04)',
+          },
+          transitionTimingFunction: {
+            'ae-out': 'cubic-bezier(.16,1,.3,1)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body { font-family: 'Roboto', 'Helvetica Neue', Arial, system-ui, sans-serif; color: #13263A; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    /* Hide number-input spinners */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    /* Custom select arrow */
+    .ae-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%231C67A1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px !important;
+    }
+    /* Focus ring: thin brand-blue, 2px */
+    .ae-input:focus { outline: none; border-color: #1C67A1; box-shadow: 0 0 0 3px rgba(28,103,161,.12); }
+    /* Subtle hover image zoom for speakers */
+    .ae-zoom img { transition: transform 360ms cubic-bezier(.16,1,.3,1); }
+    .ae-zoom:hover img { transform: scale(1.03); }
+    /* FAQ chevron rotate */
+    .ae-faq-chev { transition: transform 220ms cubic-bezier(.16,1,.3,1); }
+    .ae-faq-open .ae-faq-chev { transform: rotate(180deg); }
+  </style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body class="bg-white">
+  <div id="root"></div>
+
+  <script type="text/babel" data-presets="env,react">
+
+const { useState, useEffect, useRef } = React;
+
+/* ---------------- Icon helper (inline Lucide-style SVG, React-owned) ----------------
+   Paths sourced from lucide-icons. Kept as JSX so React fully owns the node
+   (no DOM mutation), avoiding removeChild errors on unmount.
+*/
+const ICON_PATHS = {
+  'arrow-right': <><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></>,
+  'calendar': <><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></>,
+  'clock': <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></>,
+  'video': <><path d="m22 8-6 4 6 4V8Z" /><rect x="2" y="6" width="14" height="12" rx="2" ry="2" /></>,
+  'hourglass': <><path d="M5 22h14" /><path d="M5 2h14" /><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></>,
+  'monitor-play': <><path d="M10 7.5v5l4-2.5-4-2.5Z" /><rect width="20" height="14" x="2" y="3" rx="2" /><path d="M12 17v4" /><path d="M8 21h8" /></>,
+  'workflow': <><rect width="8" height="8" x="3" y="3" rx="2" /><path d="M7 11v4a2 2 0 0 0 2 2h4" /><rect width="8" height="8" x="13" y="13" rx="2" /></>,
+  'messages-square': <><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z" /><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" /></>,
+  'check': <polyline points="20 6 9 17 4 12" />,
+  'calendar-plus': <><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="M16 19h6" /><path d="M19 16v6" /></>,
+  'chevron-down': <polyline points="6 9 12 15 18 9" />
+};
+function Icon({ name, size = 20, stroke = 1.75, className = '' }) {
+  const content = ICON_PATHS[name] || null;
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={stroke}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      style={{ display: 'inline-block', flexShrink: 0 }}>
+      
+          {content}
+        </svg>);
+
+}
+
+/* ---------------- Shared bits ---------------- */
+const Eyebrow = ({ children, className = '' }) =>
+<div className={`text-[11px] sm:text-xs font-medium uppercase tracking-eyebrow text-ae-dark-blue ${className}`}>
+        {children}
+      </div>;
+
+
+const AccentRule = ({ className = '' }) =>
+<div className={`h-[2px] w-10 bg-ae-dark-blue ${className}`} />;
+
+
+/* ---------------- Sticky Nav ---------------- */
+function Nav({ onRegister }) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 4);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <header className={`sticky top-0 z-40 bg-white transition-shadow duration-200 ease-ae-out ${scrolled ? 'shadow-ae1 border-b border-ae-ink-100' : 'border-b border-transparent'}`}>
+          <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4">
+            <a href="#top" className="flex items-center">
+              <img src="assets/logo/aerones-logo-rgb.png" alt="Aerones" className="h-5 sm:h-[26px] w-auto" />
+            </a>
+            <div className="hidden md:flex items-center gap-7 text-[13px] text-ae-ink-700">
+              <a href="#agenda" className="hover:text-ae-dark-blue transition-colors">Agenda</a>
+              <a href="#speakers" className="hover:text-ae-dark-blue transition-colors">Speakers</a>
+              <a href="#faq" className="hover:text-ae-dark-blue transition-colors">FAQ</a>
+            </div>
+            <button
+          onClick={onRegister}
+          className="inline-flex items-center gap-2 rounded-full bg-ae-dark-blue px-4 py-2 text-[12px] font-medium text-white transition-colors duration-150 hover:bg-ae-light-blue active:bg-ae-ink-900 sm:px-5 sm:py-2.5 sm:text-[13px]">
+          
+              Register for June 11
+              <Icon name="arrow-right" size={14} stroke={2} />
+            </button>
+          </div>
+        </header>);
+
+}
+
+/* ---------------- Hero ---------------- */
+function Hero({ onRegister, patternOpacity = 70 }) {
+  // Subtle blueprint texture behind the laptop; tweakable 30-95.
+  const patternAlpha = Math.max(0, Math.min(0.22, (patternOpacity / 100) * 0.22));
+  return (
+    <section id="top" className="relative overflow-hidden bg-ae-dark-blue text-white">
+          {/* Subtle blueprint texture */}
+          <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "url('assets/patterns/blueprint-mid.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: patternAlpha
+        }} />
+      
+          {/* Radial highlight behind laptop, hinting at the screen glow */}
+          <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-[10%] top-1/2 hidden h-[120%] w-[70%] -translate-y-1/2 lg:block"
+        style={{
+          background: 'radial-gradient(60% 50% at 50% 50%, rgba(136,205,246,0.22) 0%, rgba(28,103,161,0) 70%)'
+        }} />
+      
+          {/* Bottom fade into trust bar */}
+          <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+        style={{ background: 'linear-gradient(180deg, rgba(11,26,39,0) 0%, rgba(11,26,39,0.35) 100%)' }} />
+      
+          {/* Corner stamps — template signature */}
+          <div className="pointer-events-none absolute left-5 top-5 z-10 hidden text-[10px] font-medium uppercase tracking-stamp text-white/70 sm:left-8 sm:top-6 sm:block">
+            June 11 · 2026
+          </div>
+          <div className="pointer-events-none absolute right-5 top-5 z-10 hidden text-[10px] font-medium uppercase tracking-stamp text-white/70 sm:right-8 sm:top-6 sm:block">
+            aerones.com / webinar
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-[1280px] px-5 pb-16 pt-14 sm:px-8 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-8">
+              {/* Left: copy */}
+              <div>
+                <h1 className="font-bold tracking-[-0.02em] text-white" style={{ fontSize: 'clamp(36px, 5.4vw, 64px)', lineHeight: 1.04 }}>
+                  See the complete Aerones operations stack — <span className="italic text-ae-sky-blue">live</span>
+                </h1>
+
+                <p className="mt-6 max-w-[560px] text-[16px] leading-[1.55] text-white/90 sm:text-[18px] sm:leading-[1.5]">
+                  From the Customer Portal to Visual Inspection Studio to our AI planning tools, join VP of Data <span className="text-white">Andis Cīrulis</span> and Product Manager <span className="text-white">Nauris Horsts</span> for a working tour of the software wind operators are using to cut downtime, sharpen budgets, and act on data faster.
+                </p>
+
+                {/* Date / time / format strip */}
+                <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px] sm:text-[14px] text-white/85">
+                  <div className="flex items-center gap-2">
+                    <Icon name="calendar" size={16} stroke={1.75} className="text-ae-sky-blue" />
+                    <span>June 11, 2026</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Icon name="clock" size={16} stroke={1.75} className="text-ae-sky-blue" />
+                    <span>3:00 PM CEST · 8:00 AM CT</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Icon name="video" size={16} stroke={1.75} className="text-ae-sky-blue" />
+                    <span>Live with Q&amp;A</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Icon name="hourglass" size={16} stroke={1.75} className="text-ae-sky-blue" />
+                    <span>60 minutes</span>
+                  </div>
+                </div>
+
+                {/* CTAs */}
+                <div className="mt-9 flex flex-wrap items-center gap-3">
+                  <button
+                onClick={onRegister}
+                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[14px] font-medium text-ae-dark-blue transition-colors duration-150 hover:bg-ae-sky-blue sm:text-[15px]">
+                
+                    Save my seat
+                    <Icon name="arrow-right" size={16} stroke={2} />
+                  </button>
+                  <a
+                href="#agenda"
+                className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-white/80 px-6 py-3 text-[14px] font-medium text-white transition-colors duration-150 hover:bg-white/10 sm:text-[15px]">
+                
+                    See the agenda
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: laptop product shot */}
+              <div className="relative">
+                <div className="absolute -inset-x-4 -bottom-6 -top-4 -z-10 hidden rounded-[40px] opacity-90 sm:block"
+              style={{
+                background: 'radial-gradient(60% 60% at 60% 50%, rgba(136,205,246,0.18) 0%, rgba(28,103,161,0) 70%)'
+              }} />
+                <img
+              src="assets/photos/portal-laptop.png"
+              alt="Aerones Customer Portal shown on a laptop"
+              loading="eager"
+              className="relative block w-full max-w-none lg:-mr-12 xl:-mr-20"
+              style={{
+                filter: 'drop-shadow(0 30px 50px rgba(0,0,0,0.35)) drop-shadow(0 8px 16px rgba(0,0,0,0.20))'
+              }} />
+            
+                {/* Floating product caption chip */}
+                <div className="absolute left-3 top-3 hidden items-center gap-2 rounded-full border border-white/20 bg-white/8 px-3 py-1.5 text-[10px] font-medium uppercase tracking-eyebrow text-ae-sky-blue backdrop-blur-[2px] sm:flex">
+                  <span className="h-1.5 w-1.5 rounded-full bg-ae-light-blue" />
+                  Customer Portal · Live Demo
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>);
+
+}
+
+/* ---------------- Trust Bar ---------------- */
+function TrustBar() {
+  const stats = [
+  { n: '25,000+', l: 'Turbines serviced' },
+  { n: '75,000+', l: 'Blades inspected' },
+  { n: '27', l: 'Countries' }];
+
+  return (
+    <section className="border-y border-ae-ink-100 bg-ae-ice-blue/40">
+          <div className="mx-auto max-w-[1280px] px-5 py-8 sm:px-8 sm:py-10">
+            <div className="grid grid-cols-1 items-center gap-y-6 sm:grid-cols-[1.4fr_1fr_1fr_1fr] sm:gap-x-8">
+              <div className="text-[13px] sm:text-[14px] text-ae-ink-700">
+                <Eyebrow className="mb-2">Trusted by wind operators worldwide</Eyebrow>
+                <div className="leading-[1.45] text-ae-ink-900">
+                  Aerones services major operators — NextEra, GE Vernova, Vestas, Enel, Siemens Gamesa — and the OEMs behind them.
+                </div>
+              </div>
+              {stats.map((s, i) =>
+          <div key={i} className="border-t border-ae-ink-200 pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+                  <div className="font-medium leading-none tracking-[-0.02em] text-ae-dark-blue" style={{ fontSize: 'clamp(30px, 3.6vw, 42px)' }}>
+                    {s.n}
+                  </div>
+                  <div className="mt-2 text-[12px] font-medium uppercase tracking-eyebrow text-ae-ink-500">{s.l}</div>
+                </div>
+          )}
+            </div>
+          </div>
+        </section>);
+
+}
+
+/* ---------------- Value Prop Trio ---------------- */
+function ValueProps() {
+  const items = [
+  {
+    icon: 'monitor-play',
+    title: 'See the full stack in action',
+    body: 'Customer Portal, Visual Inspection Studio, data tools, and the Aerones AI stack — demoed end-to-end on real turbine data.'
+  },
+  {
+    icon: 'workflow',
+    title: "Learn the operator's workflow",
+    body: 'How fleets turn inspection results into maintenance decisions, repair planning, and budget forecasts — without rebuilding their systems.'
+  },
+  {
+    icon: 'messages-square',
+    title: 'Get answers from the team building it',
+    body: "Live Q&A with the people leading Aerones' data and software direction."
+  }];
+
+  return (
+    <section className="bg-white">
+          <div className="mx-auto max-w-[1280px] px-5 py-16 sm:px-8 sm:py-24">
+            <div className="mb-10 max-w-2xl sm:mb-14">
+              <Eyebrow>What You'll Take Away</Eyebrow>
+              <AccentRule className="mt-3" />
+              <h2 className="mt-4 font-medium tracking-[-0.015em] text-ae-ink-900" style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', lineHeight: 1.15 }}>
+                A working tour of how operators move from inspection to insight.
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-3">
+              {items.map((it, i) =>
+          <div key={i} className="border-t border-ae-ink-200 pt-6">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-md bg-ae-ice-blue text-ae-dark-blue">
+                    <Icon name={it.icon} size={22} stroke={1.75} />
+                  </div>
+                  <h3 className="mt-5 text-[20px] font-medium leading-[1.25] text-ae-ink-900 sm:text-[22px]">{it.title}</h3>
+                  <p className="mt-3 text-[15px] leading-[1.55] text-ae-ink-700">{it.body}</p>
+                </div>
+          )}
+            </div>
+          </div>
+        </section>);
+
+}
+
+/* ---------------- Agenda ---------------- */
+function Agenda() {
+  const rows = [
+  { t: '5 min', title: 'The Aerones approach', body: 'How hardware, software, and AI connect in a single workflow.' },
+  { t: '10 min', title: 'Customer Portal walkthrough', body: 'Fleet visibility, reporting, and collaboration across teams.' },
+  { t: '10 min', title: 'Visual Inspection Studio', body: 'From raw inspection footage to actionable defect data.' },
+  { t: '15 min', title: 'Data tools and the AI stack', body: 'Predictive insights and smarter operations planning.' },
+  { t: '15 min', title: 'Live Q&A with Andis and Nauris', body: 'Bring questions on fleet inspections, defect tracking, or planning.' }];
+
+  return (
+    <section id="agenda" className="bg-ae-ink-50">
+          <div className="mx-auto max-w-[1280px] px-5 py-16 sm:px-8 sm:py-24">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[360px_1fr] lg:gap-16">
+              <div>
+                <Eyebrow>Agenda</Eyebrow>
+                <AccentRule className="mt-3" />
+                <h2 className="mt-4 font-medium tracking-[-0.015em] text-ae-ink-900" style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', lineHeight: 1.15 }}>
+                  60 minutes, end-to-end.
+                </h2>
+                <p className="mt-4 text-[15px] leading-[1.55] text-ae-ink-700">
+                  Each segment is a short, focused walkthrough — built so asset managers, ops leads, and OEM service teams all leave with something they can use Monday morning.
+                </p>
+              </div>
+              <ol className="relative">
+                {rows.map((r, i) =>
+            <li key={i} className="grid grid-cols-[40px_88px_1fr] items-start gap-x-4 border-b border-ae-ink-200 py-6 sm:grid-cols-[56px_96px_1fr] sm:gap-x-6 sm:py-7 last:border-b-0">
+                    <div className="text-[18px] font-medium tabular-nums text-ae-dark-blue sm:text-[20px]">
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <div className="inline-flex h-7 w-fit items-center rounded-sm bg-white px-2.5 text-[11px] font-medium uppercase tracking-eyebrow text-ae-ink-700 ring-1 ring-ae-ink-200">
+                      {r.t}
+                    </div>
+                    <div>
+                      <div className="text-[17px] font-medium leading-[1.3] text-ae-ink-900 sm:text-[19px]">{r.title}</div>
+                      <div className="mt-1.5 text-[14px] leading-[1.55] text-ae-ink-700 sm:text-[15px]">{r.body}</div>
+                    </div>
+                  </li>
+            )}
+              </ol>
+            </div>
+          </div>
+        </section>);
+
+}
+
+/* ---------------- Speaker portrait ---------------- */
+function SpeakerPortrait({ src, initials, alt, objectPosition = '50% 35%' }) {
+  const [errored, setErrored] = useState(false);
+  if (src && !errored) {
+    return (
+      <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-ae-ink-100">
+            <img
+          src={src}
+          alt={alt}
+          className="absolute inset-0 h-full w-full"
+          onError={() => setErrored(true)}
+          loading="lazy" style={{ objectFit: 'cover', objectPosition }} />
+        
+          </div>);
+
+  }
+  return (
+    <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-ae-ink-100">
+          <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage: "url('assets/patterns/blueprint-mid.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }} />
+      
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-[64px] font-medium tracking-[-0.02em] text-ae-dark-blue/80 sm:text-[88px]">{initials}</div>
+          </div>
+        </div>);
+
+}
+
+/* ---------------- Speakers ---------------- */
+function Speakers({ tweaks }) {
+  const people = [
+  {
+    initials: 'AC',
+    src: 'assets/speakers/andis-cirulis.jpg',
+    name: 'Andis Cīrulis',
+    role: 'VP of Data, Aerones',
+    bio: "Andis leads Aerones' data and AI organization, turning years of high-resolution wind turbine inspection data into the predictive models and planning tools used by operators worldwide. He works directly with asset managers to translate operational data into clearer decisions on inspection cadence, repair prioritization, and long-range maintenance budgets.",
+    tags: ['Data & AI', 'Predictive models', 'Asset planning'],
+    objectPosition: `${tweaks?.andisPosX ?? 50}% ${tweaks?.andisPosY ?? 35}%`
+  },
+  {
+    initials: 'NH',
+    src: 'assets/speakers/nauris-horsts.jpg',
+    name: 'Nauris Horsts',
+    role: 'Software Product Manager, Aerones',
+    bio: "Nauris leads product for Aerones' Customer Portal and Visual Inspection Studio. He partners with wind operators and OEMs to shape the workflows behind fleet inspections, defect tracking, and reporting — making sure every release closes a real gap in how teams move from raw inspection data to maintenance action.",
+    tags: ['Customer Portal', 'Visual Inspection Studio', 'OEM workflows'],
+    objectPosition: `${tweaks?.naurisPosX ?? 50}% ${tweaks?.naurisPosY ?? 35}%`
+  }];
+
+  return (
+    <section id="speakers" className="bg-white">
+          <div className="mx-auto max-w-[1280px] px-5 py-16 sm:px-8 sm:py-24">
+            <div className="mb-10 max-w-2xl sm:mb-14">
+              <Eyebrow>Speakers</Eyebrow>
+              <AccentRule className="mt-3" />
+              <h2 className="mt-4 font-medium tracking-[-0.015em] text-ae-ink-900" style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', lineHeight: 1.15 }}>
+                The team building it, on the call.
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
+              {people.map((p, i) =>
+          <article key={i} className="grid grid-cols-1 gap-6 sm:grid-cols-[180px_1fr] sm:gap-8">
+                  <div className="ae-zoom overflow-hidden">
+                    <SpeakerPortrait src={p.src} initials={p.initials} alt={`Portrait of ${p.name}`} objectPosition={p.objectPosition} />
+                  </div>
+                  <div>
+                    <div className="text-[20px] font-medium leading-[1.2] text-ae-ink-900 sm:text-[22px]">{p.name}</div>
+                    <div className="mt-1 text-[14px] text-ae-dark-blue sm:text-[15px]">{p.role}</div>
+                    <p className="mt-4 text-[14px] leading-[1.6] text-ae-ink-700 sm:text-[15px]">{p.bio}</p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {p.tags.map((t, j) =>
+                <span key={j} className="inline-flex items-center rounded-sm bg-ae-ink-50 px-2.5 py-1 text-[11px] font-medium uppercase tracking-eyebrow text-ae-ink-700 ring-1 ring-ae-ink-200">
+                          {t}
+                        </span>
+                )}
+                    </div>
+                  </div>
+                </article>
+          )}
+            </div>
+          </div>
+        </section>);
+
+}
+
+/* ---------------- Pipedrive Webform embed ----------------
+   The hosted Pipedrive form handles validation, custom-field mapping,
+   and the post-submit redirect to the Zoom Webinar signup page.
+   Embedded via Pipedrive's auto-resizing loader so it matches our layout.
+*/
+const PIPEDRIVE_FORM_URL = 'https://webforms.pipedrive.com/f/1HGfaP5m0VZfWOOyMAbH89U9dlH472JRTgcTybKhnbbqymGQEIkXoWTz1gnMQHs5B';
+
+function PipedriveForm() {
+  useEffect(() => {
+    // Inject the Pipedrive loader script once. It scans the page for
+    // .pipedriveWebForms divs and replaces each with a sized iframe.
+    if (document.querySelector('script[data-pd-webforms-loader]')) return;
+    const s = document.createElement('script');
+    s.src = 'https://webforms.pipedrive.com/f/loader';
+    s.async = true;
+    s.setAttribute('data-pd-webforms-loader', 'true');
+    document.body.appendChild(s);
+  }, []);
+  return (
+    <div className="pipedriveWebForms" data-pd-webforms={PIPEDRIVE_FORM_URL} style={{ minHeight: 560 }} />
+  );
+}
+
+function RegistrationSection() {
+  return (
+    <section id="register" className="relative overflow-hidden bg-ae-dark-blue text-white">
+          {/* Blueprint pattern overlay */}
+          <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+        style={{ backgroundImage: "url('assets/patterns/blueprint-mid.png')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
+      
+          <div className="relative mx-auto max-w-[1280px] px-5 py-16 sm:px-8 sm:py-24">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[420px_1fr] lg:gap-16">
+              <div>
+                <div className="text-[11px] font-medium uppercase tracking-eyebrow text-ae-sky-blue">Register</div>
+                <div className="mt-3 h-[2px] w-10 bg-ae-sky-blue" />
+                <h2 className="mt-4 font-medium tracking-[-0.015em] text-white" style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', lineHeight: 1.15 }}>
+                  Register for the webinar
+                </h2>
+                <p className="mt-4 text-[15px] leading-[1.6] text-white/85">
+                  Free to attend. Can't make it live? Register anyway — we'll send you the recording.
+                </p>
+                <div className="mt-8 space-y-3 text-[14px] text-white/85">
+                  <div className="flex items-start gap-3">
+                    <Icon name="calendar" size={18} stroke={1.75} className="mt-0.5 text-ae-sky-blue" />
+                    <div>
+                      <div className="text-white">June 11, 2026</div>
+                      <div className="text-white/70">3:00 PM CEST · 8:00 AM CT</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon name="hourglass" size={18} stroke={1.75} className="mt-0.5 text-ae-sky-blue" />
+                    <div>
+                      <div className="text-white">60 minutes</div>
+                      <div className="text-white/70">Including 15 min live Q&amp;A</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon name="video" size={18} stroke={1.75} className="mt-0.5 text-ae-sky-blue" />
+                    <div>
+                      <div className="text-white">Hosted on Zoom Webinar</div>
+                      <div className="text-white/70">Join link sent on registration</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-sm bg-white p-3 text-ae-ink-900 sm:p-4">
+                <PipedriveForm />
+              </div>
+            </div>
+          </div>
+        </section>);
+
+}
+
+/* ---------------- FAQ ---------------- */
+const FAQ_ITEMS = [
+{
+  q: 'Who should attend?',
+  a: 'Wind farm operators, asset managers, ops leads, and OEM service teams who own inspection programs or fleet maintenance planning. The session assumes familiarity with turbine operations — we go beyond the marketing pitch.'
+},
+{
+  q: "I can't make it live — should I still register?",
+  a: "Yes. Register anyway and we'll email you the full recording the day after, along with the slide deck and any links the speakers share. You'll get the same follow-up as live attendees."
+},
+{
+  q: 'What exactly will be demoed?',
+  a: 'Live screen-shares of the Customer Portal, Visual Inspection Studio, and a walkthrough of the data tools and AI stack against real (anonymized) turbine inspection data. No slideware demos.'
+},
+{
+  q: 'How do I ask a question during the webinar?',
+  a: "Zoom's Q&A panel will be open from the first minute. We'll work through as many as we can in the final 15 minutes; anything we don't reach gets a written follow-up by email within a few days."
+}];
+
+
+function FAQItem({ q, a, open, onToggle }) {
+  return (
+    <div className={`border-b border-ae-ink-200 ${open ? 'ae-faq-open' : ''}`}>
+          <button
+        onClick={onToggle}
+        aria-expanded={open}
+        className="flex w-full items-start justify-between gap-6 py-5 text-left transition-colors hover:text-ae-dark-blue sm:py-6">
+        
+            <span className="text-[16px] font-medium leading-[1.35] text-ae-ink-900 sm:text-[18px]">{q}</span>
+            <span className="ae-faq-chev mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ae-ink-200 text-ae-dark-blue">
+              <Icon name="chevron-down" size={16} stroke={2} />
+            </span>
+          </button>
+          <div
+        className="overflow-hidden transition-[max-height,opacity] duration-300 ease-ae-out"
+        style={{ maxHeight: open ? 240 : 0, opacity: open ? 1 : 0 }}>
+        
+            <div className="pb-6 pr-12 text-[14px] leading-[1.65] text-ae-ink-700 sm:text-[15px]">
+              {a}
+            </div>
+          </div>
+        </div>);
+
+}
+
+function FAQ() {
+  const [openIdx, setOpenIdx] = useState(0);
+  return (
+    <section id="faq" className="bg-white">
+          <div className="mx-auto max-w-[1280px] px-5 py-16 sm:px-8 sm:py-24">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[360px_1fr] lg:gap-16">
+              <div>
+                <Eyebrow>FAQ</Eyebrow>
+                <AccentRule className="mt-3" />
+                <h2 className="mt-4 font-medium tracking-[-0.015em] text-ae-ink-900" style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', lineHeight: 1.15 }}>
+                  Common questions.
+                </h2>
+                <p className="mt-4 text-[15px] leading-[1.55] text-ae-ink-700">
+                  Anything else? Email <a href="mailto:info@aerones.com" className="text-ae-dark-blue underline underline-offset-2 hover:text-ae-light-blue">info@aerones.com</a> and we'll get back to you the same working day.
+                </p>
+              </div>
+              <div>
+                {FAQ_ITEMS.map((item, i) =>
+            <FAQItem
+              key={i}
+              q={item.q}
+              a={item.a}
+              open={openIdx === i}
+              onToggle={() => setOpenIdx(openIdx === i ? -1 : i)} />
+
+            )}
+              </div>
+            </div>
+          </div>
+        </section>);
+
+}
+
+/* ---------------- Footer ---------------- */
+function Footer() {
+  return (
+    <footer className="bg-ae-ink-900 text-white">
+          <div className="mx-auto max-w-[1280px] px-5 pb-7 pt-16 sm:px-8 sm:pb-8 sm:pt-20">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-12">
+              <div>
+                <img src="assets/logo/aerones-logo-white.png" alt="Aerones" className="h-6 w-auto" />
+                <p className="mt-5 max-w-[340px] text-[13px] leading-[1.65] text-white/65">
+                  Robot-enabled wind turbine maintenance and inspections. Serving operators that represent over 50% of global wind capacity.
+                </p>
+                <div className="mt-5 flex gap-5">
+                  {['LinkedIn', 'YouTube', 'Facebook', 'Instagram'].map((s) =>
+              <a key={s} href="#" className="text-[12px] text-white/70 transition-colors hover:text-white">{s}</a>
+              )}
+                </div>
+              </div>
+              <div>
+                <div className="mb-3.5 text-[11px] font-medium uppercase tracking-eyebrow text-ae-sky-blue">Contacts</div>
+                <div className="text-[13px] leading-[1.7] text-white/80">
+                  <div className="font-medium text-white">USA HQ</div>
+                  1800 Shady Oaks Dr<br />Denton, TX 76205<br />+1 669 213 80 50
+                </div>
+              </div>
+              <div>
+                <div className="mb-3.5 text-[11px] font-medium uppercase tracking-eyebrow text-transparent">.</div>
+                <div className="text-[13px] leading-[1.7] text-white/80">
+                  <div className="font-medium text-white">EU HQ</div>
+                  Katlakalna iela 11E<br />Riga, Latvia, LV-1073<br />+371 2809 0999
+                </div>
+              </div>
+              <div>
+                <div className="mb-3.5 text-[11px] font-medium uppercase tracking-eyebrow text-ae-sky-blue">Webinar</div>
+                <div className="flex flex-col gap-2 text-[13px] text-white/80">
+                  <a href="#agenda" className="hover:text-white">Agenda</a>
+                  <a href="#speakers" className="hover:text-white">Speakers</a>
+                  <a href="#faq" className="hover:text-white">FAQ</a>
+                  <a href="#register" className="hover:text-white">Register</a>
+                  <a href="#" className="hover:text-white">Privacy policy</a>
+                </div>
+              </div>
+            </div>
+            <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-5 text-[12px] text-white/50 sm:flex-row sm:items-center">
+              <div>© 2026 Aerones Engineering</div>
+              <div className="uppercase tracking-stamp">aerones.com</div>
+            </div>
+          </div>
+        </footer>);
+
+}
+
+/* ---------------- Static brand + photo config ---------------- */
+const TWEAK_DEFAULTS = {
+  "andisPosX": 50,
+  "andisPosY": 35,
+  "naurisPosX": 50,
+  "naurisPosY": 61,
+  "primaryCta": "#1C67A1",
+  "heroOverlay": 70
+};
+
+/* ---------------- App ---------------- */
+function App() {
+  const t = TWEAK_DEFAULTS;
+  const scrollToRegister = () => {
+    const el = document.getElementById('register');
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+  };
+
+  // Apply primary CTA color globally via runtime style override.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--ae-cta', t.primaryCta);
+    let s = document.getElementById('__ae_tweak_overrides');
+    if (!s) { s = document.createElement('style'); s.id = '__ae_tweak_overrides'; document.head.appendChild(s); }
+    s.textContent = `
+      .bg-ae-dark-blue { background-color: ${t.primaryCta} !important; }
+      .text-ae-dark-blue { color: ${t.primaryCta} !important; }
+      .border-ae-dark-blue { border-color: ${t.primaryCta} !important; }
+    `;
+  }, [t.primaryCta]);
+
+  return (
+    <div className="font-sans">
+          <Nav onRegister={scrollToRegister} />
+          <Hero onRegister={scrollToRegister} patternOpacity={t.heroOverlay} />
+          <TrustBar />
+          <ValueProps />
+          <Agenda />
+          <Speakers tweaks={t} />
+          <RegistrationSection />
+          <FAQ />
+          <Footer />
+        </div>);
+
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+// Smooth-scroll anchor links
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute('href').slice(1);
+  if (!id) return;
+  const el = document.getElementById(id);
+  if (el) {
+    e.preventDefault();
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+  }
+});
+</script>
+</body>
+</html>
